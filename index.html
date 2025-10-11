@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Showcase - Class of 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Embedded CSS for single-file deployment. Modern, responsive design using CSS Grid and Flexbox for attractiveness. Colors: Vibrant blues and greens for a fresh, educational feel. */
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-menu a:hover {
+            opacity: 0.8;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 80px; /* Account for fixed header */
+            justify-content: space-between;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 2rem;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .hero-image {
+            flex: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Students Section */
+        .students {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .students h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .students-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .student-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .student-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .student-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+
+        .student-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .student-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .learn-more {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .learn-more:hover {
+            color: #764ba2;
+        }
+
+        /* About */
+        .about {
+            padding: 5rem 0;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+
+            .students-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Mobile menu styles */
+        .nav-menu.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgba(102, 126, 234, 0.95);
+            padding: 1rem;
+            gap: 1rem;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER SECTION -->
+    <!-- This section can be replaced with dynamic content, e.g., in JSP: <%@ page import="java.util.List" %> and loop over school name or announcements from a backend. -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>Student Portal</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#students">Students</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <!-- This section can be replaced with JSP to dynamically load hero image or text from a CMS or database. Example JSP snippet: -->
+    <!-- <% String heroTitle = request.getAttribute("heroTitle") != null ? (String) request.getAttribute("heroTitle") : "Welcome to Our Student Community"; %> -->
+    <!-- <h2><%= heroTitle %></h2> -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Welcome to the Student Showcase</h2>
+            <p>Discover talented students from our program. Click on profiles to learn more.</p>
+            <a href="#students" class="cta-button">Explore Students</a>
+        </div>
+        <div class="hero-image">
+            <!-- Placeholder for background image; replace src with dynamic path in JSP: <img src="<%= heroImagePath %>" alt="Hero Image"> -->
+            <img src="https://via.placeholder.com/600x400?text=Campus+Life" alt="Campus Life">
+        </div>
+    </section>
+
+    <!-- STUDENTS SECTION -->
+    <!-- This is the core dynamic section. In static HTML, data is hardcoded. For JSP, replace with: -->
+    <!-- <% List<Student> students = (List<Student>) request.getAttribute("students"); for(Student s : students) { %> -->
+    <!-- <div class="student-card"> <h3><%= s.getName() %></h3> ... </div> -->
+    <!-- <% } %> -->
+    <!-- Assume Student class has getName(), getBio(), getImage() methods. Data can come from servlet or database. -->
+    <section id="students" class="students">
+        <div class="container">
+            <h2>Our Students</h2>
+            <div class="students-grid">
+                <!-- Student 1 -->
+                <div class="student-card">
+                    <img src="https://via.placeholder.com/300x300?text=Isatou+Jallow" alt="Isatou Jallow">
+                    <h3>Isatou Jallow</h3>
+                    <p>Passionate about computer science and innovation.</p>
+                    <a href="#" class="learn-more">Learn More</a>
+                </div>
+                <!-- Student 2 -->
+                <div class="student-card">
+                    <img src="https://via.placeholder.com/300x300?text=Buba+Saidy" alt="Buba Saidy">
+                    <h3>Buba Saidy</h3>
+                    <p>Excelling in mathematics and problem-solving.</p>
+                    <a href="#" class="learn-more">Learn More</a>
+                </div>
+                <!-- Student 3 -->
+                <div class="student-card">
+                    <img src="https://via.placeholder.com/300x300?text=Ismaila+Bangura" alt="Ismaila Bangura">
+                    <h3>Ismaila Bangura</h3>
+                    <p>Future engineer with a focus on sustainable tech.</p>
+                    <a href="#" class="learn-more">Learn More</a>
+                </div>
+                <!-- Student 4 -->
+                <div class="student-card">
+                    <img src="https://via.placeholder.com/300x300?text=Sheriff+Sowe" alt="Sheriff Sowe">
+                    <h3>Sheriff Sowe</h3>
+                    <p>Creative artist and digital designer.</p>
+                    <a href="#" class="learn-more">Learn More</a>
+                </div>
+                <!-- Student 5 -->
+                <div class="student-card">
+                    <img src="https://via.placeholder.com/300x300?text=Lamin+Matter" alt="Lamin Matter">
+                    <h3>Lamin Matter</h3>
+                    <p>Enthusiastic biology student exploring life sciences.</p>
+                    <a href="#" class="learn-more">Learn More</a>
+                </div>
+                <!-- Student 6 -->
+                <div class="student-card">
+                    <img src="https://via.placeholder.com/300x300?text=Lamin+Sanneh" alt="Lamin Sanneh">
+                    <h3>Lamin Sanneh</h3>
+                    <p>Business leader in the making.</p>
+                    <a href="#" class="learn-more">Learn More</a>
+                </div>
+                <!-- Student 7 -->
+                <div class="student-card">
+                    <img src="https://via.placeholder.com/300x300?text=Musa+Kebba" alt="Musa Kebba">
+                    <h3>Musa Kebba</h3>
+                    <p>History buff and cultural advocate.</p>
+                    <a href="#" class="learn-more">Learn More</a>
+                </div>
+                <!-- Student 8 -->
+                <div class="student-card">
+                    <img src="https://via.placeholder.com/300x300?text=Fatoumatta+Bah" alt="Fatoumatta Bah">
+                    <h3>Fatoumatta Bah</h3>
+                    <p>Environmental science enthusiast.</p>
+                    <a href="#" class="learn-more">Learn More</a>
+                </div>
+                <!-- Student 9 -->
+                <div class="student-card">
+                    <img src="https://via.placeholder.com/300x300?text=Lamin+Ceesay" alt="Lamin Ceesay">
+                    <h3>Lamin Ceesay</h3>
+                    <p>Physics whiz with a knack for experiments.</p>
+                    <a href="#" class="learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <!-- Replace with JSP for dynamic about text: <p><%= aboutContent %></p> where aboutContent from request attribute. -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>This portal highlights the achievements and stories of our outstanding students. We foster a community of learners dedicated to excellence.</p>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <!-- For JSP, integrate form submission: <form action="ContactServlet" method="post"> and handle in backend. -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <!-- Static footer; in JSP, add dynamic copyright year: <%= new java.util.Date().getYear() + 1900 %> -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Student Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Embedded JavaScript for single-file deployment. Basic interactivity for attractiveness. Add more for modals on "Learn More" clicks if needed.
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission (static demo; in JSP, handle via AJAX or full post)
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! (This is a demo - integrate with backend for real submission.)');
+            });
+        }
+
+        // For JSP integration: In a servlet, forward to this JSP with student list: request.setAttribute("students", studentList); 
+        // Then in JSP, use JSTL or scriptlets to loop as noted in HTML comments.
+    </script>
+</body>
+</html>
